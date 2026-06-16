@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./config/db.js");
-const userroutes = require("./controllers/userControllers.js")
-const routes = require("./routes/userroutes.js")
+const connectDB = require("./config/db");
 require("dotenv").config();
 
 const app = express();
@@ -13,8 +11,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully!");
+});
+
 app.use("/api", require("./routes/userroutes"));
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
