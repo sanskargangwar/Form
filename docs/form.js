@@ -16,7 +16,7 @@ document
 
     try {
 
-      const response = await fetch("https://form-0wr4.onrender.com", {
+      const response = await fetch("https://form-0wr4.onrender.com/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
